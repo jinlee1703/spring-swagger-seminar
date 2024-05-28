@@ -7,6 +7,7 @@ import lombok.Getter;
 
 public class UserCreateDto {
 	@Getter
+	@AllArgsConstructor
 	public static class Request {
 		private String username;
 		private String name;
@@ -14,6 +15,11 @@ public class UserCreateDto {
 		private String phone;
 
 		public User toEntity() {
+			System.out.println("UserCreateDto.Request.toEntity");
+			System.out.println("username: " + username);
+			System.out.println("name: " + name);
+			System.out.println("password: " + password);
+			System.out.println("phone: " + phone);
 			return User.builder()
 					.username(username)
 					.name(name)
