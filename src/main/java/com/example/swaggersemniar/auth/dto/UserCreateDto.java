@@ -15,11 +15,6 @@ public class UserCreateDto {
 		private String phone;
 
 		public User toEntity() {
-			System.out.println("UserCreateDto.Request.toEntity");
-			System.out.println("username: " + username);
-			System.out.println("name: " + name);
-			System.out.println("password: " + password);
-			System.out.println("phone: " + phone);
 			return User.builder()
 					.username(username)
 					.name(name)
@@ -34,7 +29,7 @@ public class UserCreateDto {
 	public static class Response {
 		private Long id;
 
-		Response of(User user) {
+		public static Response of(User user) {
 			return new Response(user.getId());
 		}
 	}
