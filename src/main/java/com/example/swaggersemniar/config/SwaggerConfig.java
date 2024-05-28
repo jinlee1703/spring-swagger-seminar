@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 )
 public class SwaggerConfig {
 	@Bean
-	public GroupedOpenApi OpenApi() {
+	public GroupedOpenApi openApi() {
 		String[] paths = {"/**"};
 
 		return GroupedOpenApi.builder()

@@ -15,6 +15,8 @@ import com.example.swaggersemniar.auth.dto.UserUpdateDto;
 import com.example.swaggersemniar.auth.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,7 +31,14 @@ public class UserController {
 
 	@Operation(summary = "사용자 생성", description = "사용자를 생성합니다.")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "사용자 생성 성공"),
+			@ApiResponse(responseCode = "200", description = "사용자 생성 성공",
+					content = @Content(mediaType = "application/json", examples = {
+							@ExampleObject(value = """
+									{
+										"id": 1
+									}
+									""")
+					})),
 			@ApiResponse(responseCode = "400", description = "사용자 생성 실패")
 	})
 	@PostMapping
@@ -39,7 +48,17 @@ public class UserController {
 
 	@Operation(summary = "사용자 조회", description = "사용자를 조회합니다.")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "사용자 조회 성공"),
+			@ApiResponse(responseCode = "200", description = "사용자 조회 성공",
+					content = @Content(mediaType = "application/json", examples = {
+							@ExampleObject(value = """
+									{
+										"id": 1,
+										"username": "test",
+										"name": "테스터",
+										"phone": "010-1234-5678"
+									}
+									""")
+					})),
 			@ApiResponse(responseCode = "400", description = "사용자 조회 실패")
 	})
 	@GetMapping("/{id}")
@@ -49,7 +68,16 @@ public class UserController {
 
 	@Operation(summary = "사용자 수정", description = "사용자를 수정합니다.")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "사용자 수정 성공"),
+			@ApiResponse(responseCode = "200", description = "사용자 수정 성공", content = @Content(mediaType = "application/json", examples = {
+					@ExampleObject(value = """
+							{
+								"id": 1,
+								"username": "test",
+								"name": "테스터",
+								"phone": "010-1234-5678"
+							}
+							""")
+			})),
 			@ApiResponse(responseCode = "400", description = "사용자 수정 실패")
 	})
 	@PutMapping("/{id}")
@@ -59,7 +87,12 @@ public class UserController {
 
 	@Operation(summary = "사용자 삭제", description = "사용자를 삭제합니다.")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "사용자 삭제 성공"),
+			@ApiResponse(responseCode = "200", description = "사용자 삭제 성공", content = @Content(mediaType = "application/json", examples = {
+					@ExampleObject(value = """
+							{
+							}
+							""")
+			})),
 			@ApiResponse(responseCode = "400", description = "사용자 삭제 실패")
 	})
 	@DeleteMapping("/{id}")

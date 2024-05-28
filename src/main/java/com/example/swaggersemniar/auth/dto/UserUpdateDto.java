@@ -2,12 +2,14 @@ package com.example.swaggersemniar.auth.dto;
 
 import com.example.swaggersemniar.auth.entity.User;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class UserUpdateDto {
 	@Getter
 	@AllArgsConstructor
+	@Schema(name = "UserUpdateDto.Request", description = "사용자 수정 요청 DTO")
 	public static class Request {
 		private String username;
 		private String password;
@@ -24,6 +26,7 @@ public class UserUpdateDto {
 
 	@Getter
 	@AllArgsConstructor
+	@Schema(name = "UserUpdateDto.Response", description = "사용자 수정 응답 DTO")
 	public static class Response {
 		private Long id;
 		private String username;
