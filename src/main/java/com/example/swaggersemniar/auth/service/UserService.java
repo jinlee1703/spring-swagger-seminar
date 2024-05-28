@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.swaggersemniar.auth.dto.UserCreateDto;
 import com.example.swaggersemniar.auth.dto.UserReadDto;
+import com.example.swaggersemniar.auth.dto.UserUpdateDto;
 import com.example.swaggersemniar.auth.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,13 @@ public class UserService {
 	public UserReadDto.Response read(Long id) {
 		return userRepository.findById(id).map(UserReadDto.Response::of)
 				.orElseThrow(() -> new IllegalArgumentException("User not found"));
+	}
+
+	public UserUpdateDto.Response update(Long id, UserUpdateDto.Request dto) {
+		return userRepository.findById(id).map(user -> {
+			user.update(dto);
+			userRepository.save(user);
+			return UserUpdateDto.Response.of(user);
+		}).orElseThrow(() -> new IllegalArgumentException("User not found"));
 	}
 }

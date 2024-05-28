@@ -1,5 +1,7 @@
 package com.example.swaggersemniar.auth.entity;
 
+import com.example.swaggersemniar.auth.dto.UserUpdateDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,5 +37,12 @@ public class User {
 		this.name = name;
 		this.password = password;
 		this.phone = phone;
+	}
+
+	public void update(UserUpdateDto.Request dto) {
+		this.username = dto.getUsername();
+		this.password = dto.getPassword();
+		this.name = dto.getName();
+		this.phone = dto.getPhone();
 	}
 }
