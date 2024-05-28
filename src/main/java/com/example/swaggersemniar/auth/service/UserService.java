@@ -30,4 +30,8 @@ public class UserService {
 			return UserUpdateDto.Response.of(user);
 		}).orElseThrow(() -> new IllegalArgumentException("User not found"));
 	}
+
+	public void delete(Long id) {
+		userRepository.deleteById(id);
+	}
 }
